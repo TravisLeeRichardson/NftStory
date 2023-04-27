@@ -14,6 +14,4 @@ Steps:
 5. In a terminal, execute the following:<br><br>
 ***npm install***<br>
 ***node index***<br>
-
-Note:
-Here is the URL of the image I used. In this case, it was a Bored Ape Yacht Club NFT: https://ipfs.io/ipfs/QmciVmDTGKiWUHVfxBskZix6pQVQ4FsuzhCBjdQCdCg7Z8
+6. Open up index.html in a browser.
