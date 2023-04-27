@@ -2,7 +2,7 @@
   "name": "nft-story",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "back-end/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "@infura/sdk": "^2.2.0",
+    "axios": "^1.3.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "ethers": "5.4",
+    "express": "^4.18.2",
     "openai": "3.2.1"
   }
 }
