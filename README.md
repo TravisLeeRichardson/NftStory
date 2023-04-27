@@ -13,6 +13,6 @@ Steps:
       WALLET_PRIVATE_KEY=**<your key here>**<br><br>
 5. In a terminal, browse to \back-end folder and execute the following:<br><br>
 ***npm install***<br>
-***node index***<br>
+***npm start***<br>
 6. In another terminal, browse to \front-end folder and type the following:<br><br>
 ***start index.html***
