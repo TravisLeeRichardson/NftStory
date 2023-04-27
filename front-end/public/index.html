@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f97af9873.js" crossorigin="anonymous"></script>
+    <title>Your NFT Story</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is the story of your NFT">
+</head>
+<body>
+<h1 id="nft-story-title">Your NFT Story</h1>
+<p class="entry-text">
+    This is the story of your NFT. <br>Please copy and paste an OPENSEA URL below,<br>and find the real story of your NFT!<br>The format should look something like this:
+</p>
+<p class="url-text">
+    https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/7762
+</p>
+<div class="entry-box">
+    <input type="text" id="contract-address" placeholder="Enter your URL here...">
+    <button id="submit-button">Tell Me a Story</button>
+</div>
+<div class="container">
+    <div class="image-box">
+        <img id="nft-image" alt="Your NFT Will Pop Up Here, and your story to the right..." src="">
+    </div>
+    <div class="story-modal" id="story-modal" tabindex="-1" role="dialog" aria-labelledby="story-modal-label">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p id="story-text">
+                    </p>
+                </div>
+                <div id="feed"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
