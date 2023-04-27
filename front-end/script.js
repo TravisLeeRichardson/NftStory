@@ -9,6 +9,7 @@ const getStory = () => {
     });
     const url = `http://localhost:3000/results?${urlSearchParams}`;
 
+
     fetch(url)
         .then(response => {
             return response.json();
