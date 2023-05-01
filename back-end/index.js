@@ -71,6 +71,11 @@ app.get('/results', async (req, res) => {
     res.json({ image: imageUrl, story: story });
 });
 
-app.listen(3000, () => {
+/*app.listen(3000, () => {
     console.log('Server started on port 3000');
+});*/
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Server started, so thats cool...');
 });
+
