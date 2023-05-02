@@ -6,6 +6,7 @@ const { Configuration, OpenAIApi } = require('openai');
 const { SDK, Auth } = require('@infura/sdk');
 
 app.use(cors());
+app.use(express.static('public'));
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -21,14 +22,6 @@ const auth = new Auth({
 });
 
 const sdk = new SDK(auth);
-let image = null;
-let traits = null;
-
-const getNFTs = async (collectionId) => {
-    const nfts = await sdk.api.getNFTsForCollection({
-        contractAddress: collectionId,
-    });
-};
 
 const getOpenAiStory = async (traits) => {
     const completion = await openai.createCompletion({
@@ -42,7 +35,6 @@ const getOpenAiStory = async (traits) => {
 const getTokenMetadata = async (collectionId, token) => {
     const tokenMetadata = await sdk.api.getTokenMetadata({
         contractAddress: collectionId,
-       // tokenId: 5260
         tokenId: token
     });
     const image = JSON.stringify(tokenMetadata.metadata.image);
@@ -52,9 +44,17 @@ const getTokenMetadata = async (collectionId, token) => {
     return { image, story };
 };
 
+const getNFTs = async (collectionId) => {
+    const nfts = await sdk.api.getNFTsForCollection({
+        contractAddress: collectionId,
+    });
+    return nfts;
+};
+
 app.get('/results', async (req, res) => {
 
     const openSeaUrl = req.query.contractAddress;
+    console.log(openSeaUrl);
 
     // Define a regular expression to match the OpenSea URL format and extract the collection address and token ID
     const regex = /^https:\/\/opensea\.io\/assets\/ethereum\/(0x[0-9a-fA-F]{40})\/(\d+)$/;
@@ -69,8 +69,14 @@ app.get('/results', async (req, res) => {
     const { image, story } = await getTokenMetadata(collection, tokenID); //might not even need to get all these NFTs. just use this.
     const imageUrl = `https://ipfs.io/ipfs/${image.replace(/^"ipfs:\/\/(.*)"$/, '$1')}`;
     res.json({ image: imageUrl, story: story });
+
 });
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
+// Start the server
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server listening on port ${process.env.PORT || 3000}`);
 });
+
+
+
+
