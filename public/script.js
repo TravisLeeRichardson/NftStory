@@ -5,9 +5,10 @@ const nftStory = document.querySelector('#feed');
 
 const getStory = () => {
     const urlSearchParams = new URLSearchParams({
-        contractAddress: contractAddressInput.value
+        contractAddress: contractAddressInput.value,
+
     });
-    const url = `http://localhost:3000/results?${urlSearchParams}`;
+    const url = `/results?${urlSearchParams}`;
 
     fetch(url)
         .then(response => {

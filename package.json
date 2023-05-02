@@ -6,11 +6,13 @@
   "engines": {
     "node": "18.16.0",
     "npm": "9.6.3"
-  },
-  "scripts": {
-    "start" : "node back-end/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  },"scripts": {
+  "start": "node back-end/index.js",
+  "build": "echo 'Nothing to build for the frontend.'",
+  "heroku-postbuild": "echo 'No postbuild steps required.'",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "dev": "nodemon back-end/index.js"
+},
   "author": "",
   "license": "ISC",
   "dependencies": {
