@@ -3,27 +3,27 @@ const contractAddressInput = document.getElementById('contract-address');
 const nftImage = document.getElementById('nft-image');
 const nftStory = document.querySelector('#feed');
 
-const getStory = () => {
+const getStory = async () => {
+    console.log('Getting story');
     const urlSearchParams = new URLSearchParams({
         contractAddress: contractAddressInput.value,
-
     });
     const url = `/results?${urlSearchParams}`;
 
-    fetch(url)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
+    try {
+        const response = await fetch(url);
+        if (response.ok) {
+            const data = await response.json();
             nftImage.src = data.image;
             nftStory.innerHTML = data.story;
-        })
-        .catch(error => console.error(error));
+        } else {
+            throw new Error('Failed to fetch data');
+        }
+    } catch (error) {
+        console.error(error);
+    }
 };
 
-submitButton.addEventListener('click', async () => {
-
+submitButton.addEventListener('click', () => {
     getStory();
-
-
 });
